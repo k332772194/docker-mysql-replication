@@ -6,23 +6,22 @@ Some script copy/modify from [Project mysql-replica](https://github.com/twang221
 
 * Master
 ```shell
-docker run
--p 3306
---env MYSQL_ROOT_PASSWORD=root_pass
---detach
-coder4/mysql-replication:8.0
+docker run \
+-p 3306 \
+--env MYSQL_ROOT_PASSWORD=root_pass \
+--detach \
+coder4/mysql-replication:8.0 --server-id=1
 ```
 
 * Slave
 ```shell
-docker run
--p 3306
---env MYSQL_ROOT_PASSWORD=root_pass
---env MYSQL_MASTER_SERVER=master
---env server_id=1
---env read_only=1
---detach
-coder4/mysql-replication:8.0
+docker run \
+-p 3306 \
+--env MYSQL_ROOT_PASSWORD=root_pass \
+--env MYSQL_MASTER_SERVER=master \
+--detach \
+coder4/mysql-replication:8.0 \
+--server-id=2 --read-only=1
 ```
 
 # All Extra Environment Variable Add By Our Image
@@ -40,11 +39,12 @@ coder4/mysql-replication:8.0
  * only valid for slave 
 * MYSQL_MASTER_WAIT_TIME
  * default 10
- * only valid for slave
-* server_id: 
- * master default set to 0, please don't change
- * slave must set different value other than 0
-* read_only
+ * only valid for slave, if master not alive after time's seconds, slave would exit
+# All Argument Variable
+* --server-id: 
+ * master should set to 1(for 8.0 compatible)
+ * slave must set different value > 1
+* --read-only
  * default 0
  * master should not set
  * slave recommand set to 1
