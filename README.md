@@ -19,8 +19,8 @@ docker run
 -p 3306
 --env MYSQL_ROOT_PASSWORD=root_pass
 --env MYSQL_MASTER_SERVER=master
---env MYSQL_REPLICA_SERVER_ID=1
---env READ_ONLY=1
+--env server_id=1
+--env read_only=1
 --detach
 coder4/mysql-replication:8.0
 ```
@@ -41,10 +41,10 @@ coder4/mysql-replication:8.0
 * MYSQL_MASTER_WAIT_TIME
  * default 10
  * only valid for slave
-* MYSQL_REPLICA_SERVER_ID: 
+* server_id: 
  * master default set to 0, please don't change
  * slave must set different value other than 0
-* READ_ONLY
+* read_only
  * default 0
  * master should not set
  * slave recommand set to 1
