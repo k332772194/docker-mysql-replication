@@ -3,7 +3,8 @@ This image is based on [Offcial MySQL Docker Image](https://hub.docker.com/_/mys
 Some script copy/modify from [Project mysql-replica](https://github.com/twang2218/mysql-replica)
 
 # Basic Usage
-## Master
+
+* Master
 ```shell
 docker run
 -p 3306
@@ -12,7 +13,7 @@ docker run
 coder4/mysql-replication:8.0
 ```
 
-## Slave
+* Slave
 ```shell
 docker run
 -p 3306
@@ -23,10 +24,8 @@ docker run
 --detach
 coder4/mysql-replication:8.0
 ```
-* The server id must be different if you have more than one slave
-* The slave server usually set read only to avoid data-conflict with master
 
-# ALl Env Variable
+# All Extra Environment Variable Add By Our Image
 * MYSQL_REPLICA_USER
  * default replication
  * please keep same for master/slave
