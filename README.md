@@ -26,25 +26,25 @@ coder4/mysql-replication:8.0 \
 
 # All Extra Environment Variable Add By Our Image
 * MYSQL_REPLICA_USER
- * default: replication
- * please keep same for master/slave
+  * default: replication
+  * please keep same for master/slave
 * MYSQL_REPLICA_PASS
- * default: pass
- * please keep same for master/slave
+  * default: pass
+  * please keep same for master/slave
 * MYSQL_MASTER_SERVER 
- * set means switch to slave mode
+  * set means switch to slave mode
 * MYSQL_MASTER_PORT
- * default: 3306
- * only valid for slave 
+  * default: 3306
+  * only valid for slave 
 * MYSQL_MASTER_WAIT_TIME
- * default: 3
- * only valid for slave, if master not alive after time's seconds, slave would exit
+  * default: 3
+  * only valid for slave, if master not alive after time's seconds, slave would exit
 
 # All Argument Variable
 * --server-id: 
- * master should set to 1(for 8.0 compatible)
- * slave must set different value > 1
+  * master should set to 1(for 8.0 compatible)
+  * slave must set different value > 1
 * --read-only
- * default 0
- * master should not set
- * slave recommand set to 1
+  * default 0
+  * master should not set
+  * slave recommand set to 1
